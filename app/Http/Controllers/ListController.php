@@ -75,7 +75,7 @@ class ListController extends Controller
         ]);
 
         if ($process) {
-            return redirect('/biodata')->with("successUpdate", "Data updated successfully");
+            return redirect('/list')->with("successUpdate", "Data updated successfully");
         } else {
             return redirect()->back()->withInput()->withErrors("Terjadi kesalahan");
         }
