@@ -19,7 +19,7 @@
                                     $id = $data->id;
                                 ?>
                                 <div>
-                                    </a><a href="{{ route('edit-biodata', base64_encode($id)) }}"
+                                    <a href="{{ route('edit-biodata', base64_encode($id)) }}"
                                         class="btn btn-warning rounded-pill mx-2">
                                         Edit Data
                                     </a>

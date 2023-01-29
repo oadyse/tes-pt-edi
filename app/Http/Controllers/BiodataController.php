@@ -115,7 +115,7 @@ class BiodataController extends Controller
             'salary' => $request->salary,
         ]);
         $process1 = Pendidikan::findOrFail($id)->update([
-            'id_biodata' => $process->id,
+            'id_biodata' => $id,
             'jenjang' => $request->jenjang,
             'institusi' => $request->institusi,
             'jurusan' => $request->jurusan,
@@ -123,13 +123,13 @@ class BiodataController extends Controller
             'ipk' => $request->ipk,
         ]);
         $process2 = Pelatihan::findOrFail($id)->update([
-            'id_biodata' => $process->id,
+            'id_biodata' => $id,
             'nama_kursus' => $request->nama_kursus,
             'sertifikat' => $request->sertifikat,
             'tahun' => $request->tahun,
         ]);
         $process3 = Pekerjaan::findOrFail($id)->update([
-            'id_biodata' => $process->id,
+            'id_biodata' => $id,
             'perusahaan' => $request->perusahaan,
             'posisi' => $request->posisi,
             'salary' => $request->salary,

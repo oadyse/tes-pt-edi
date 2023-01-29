@@ -53,7 +53,7 @@ class ListController extends Controller
             'salary' => $request->salary,
         ]);
         $process1 = Pendidikan::findOrFail($id)->update([
-            'id_user' => $request->id_user,
+            'id_biodata' => $id,
             'jenjang' => $request->jenjang,
             'institusi' => $request->institusi,
             'jurusan' => $request->jurusan,
@@ -61,13 +61,13 @@ class ListController extends Controller
             'ipk' => $request->ipk,
         ]);
         $process2 = Pelatihan::findOrFail($id)->update([
-            'id_user' => $request->id_user,
+            'id_biodata' => $id,
             'nama_kursus' => $request->nama_kursus,
             'sertifikat' => $request->sertifikat,
             'tahun' => $request->tahun,
         ]);
         $process3 = Pekerjaan::findOrFail($id)->update([
-            'id_user' => $request->id_user,
+            'id_biodata' => $id,
             'perusahaan' => $request->perusahaan,
             'posisi' => $request->posisi,
             'salary' => $request->salary,
@@ -84,18 +84,15 @@ class ListController extends Controller
     public function delete($id)
     {
         $id = base64_decode($id);
-        try {
-            $process = Biodata::findOrFail($id)->delete();
-            $process1 = Biodata::findOrFail($id)->delete();
-            $process2 = Biodata::findOrFail($id)->delete();
-            $process3 = Biodata::findOrFail($id)->delete();
-            if ($process) {
-                return redirect()->back()->with("delete", "Poof! Your data has been deleted!");
-            } else {
-                return redirect()->back()->withErrors("Terjadi kesalahan saat menghapus data");
-            }
-        } catch (\Exception $e) {
-            abort(404);
+
+        $process1 = Pendidikan::findOrFail($id)->delete();
+        $process2 = Pelatihan::findOrFail($id)->delete();
+        $process3 = Pekerjaan::findOrFail($id)->delete();
+        $process = Biodata::findOrFail($id)->delete();
+        if ($process) {
+            return redirect()->back()->with("delete", "Poof! Your data has been deleted!");
+        } else {
+            return redirect()->back()->withErrors("Terjadi kesalahan saat menghapus data");
         }
     }
 }
